@@ -1,0 +1,6 @@
+Eremin 270 5 N
+Ribkov 150 5 G
+Ozornin 150 2.5 S
+Arsenovich 300 3 G
+Noskov 270 4 S
+Zxc 1 1 N

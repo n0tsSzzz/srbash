@@ -1,25 +1,20 @@
 #!/bin/bash
 
-num1=0
-num2=0
-num3=0
-for file in `cat 1.txt`
-do
-    num1=$(( $num1 + 1 ))
+while getopts "f:o:t:" opt; do
+    case "$opt" in
+        f)
+            in=$OPTARG
+        ;;
+        o)
+            out=${OPTARG:-out\.txt}
+        ;;
+        t)
+            places=${OPTARG:-5}
+        ;;
+    esac
 done
 
-for file in `cat 2.txt`
-do
-    num2=$(( $num2 + 1 ))
-done
 
-for file in `cat 3.txt`
-do
-    num3=$(( $num3 + 1 ))
-done
 
-if [[ ("$num1" == "$num2") && ("$num2" == "$num3") && ("$num1" == "$num3") ]]; then
-    echo "1"
-else
-    echo "2"
-fi
+cat $in | sort | sed -e 's/ G/ 1G/g' -e 's/ S/ 2S/g' -e 's/ N/ 3N/g' | sort --stable -k 2r -k 3g -k 4   |  \
+    sed -e 's/ 1G/ G/g' -e 's/ 2S/ S/g' -e 's/ 3N/ N/g' | head --lines=$places > $out
