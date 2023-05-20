@@ -1,5 +1,0 @@
-Eremin 270 5 G
-Noskov 270 5 S
-Arsenovich 270 5 N
-Ribkov 150 5 G
-Ozornin 150 5 S
